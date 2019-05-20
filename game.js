@@ -76,7 +76,7 @@ let ratio_x = document.body.clientWidth / (tile_width * map_col),
 
       var client_height = document.documentElement.clientHeight;
 
-      display.context.canvas.width = document.body.clientWidth - 32;
+      display.context.canvas.width = document.body.clientWidth;
 
       display.context.canvas.height = Math.floor(document.body.clientHeight);
 

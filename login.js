@@ -19,6 +19,7 @@ var config = {
     var user = result.user;
     userName = user.displayName;
     console.log(userName);
+    player.name = userName;
   }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;

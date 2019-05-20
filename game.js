@@ -4,6 +4,20 @@ let tile_width = 28,
   tile_height = 28;
 let ratio_x = document.body.clientWidth / (tile_width * map_col),
   ratio_y = document.body.clientHeight / (tile_height * map_row);
+let player = new Player({
+  ratio_x: ratio_x,
+  ratio_y: ratio_y,
+  color: "#ff0000",
+  width: 12,
+  height: 12,
+  jumping: true,
+  old_x: 160,
+  old_y: 160,
+  velocity_x: 0,
+  velocity_y: 0,
+  x: 160,
+  y: 90
+});
 
 (function () {
 
@@ -14,21 +28,6 @@ let ratio_x = document.body.clientWidth / (tile_width * map_col),
     rows: map_row,
     tile_width: tile_width,
     tile_height: tile_height
-  });
-
-  let player = new Player({
-    ratio_x: ratio_x,
-    ratio_y: ratio_y,
-    color: "#ff0000",
-    width: 12,
-    height: 12,
-    jumping: true,
-    old_x: 160,
-    old_y: 160,
-    velocity_x: 0,
-    velocity_y: 0,
-    x: 160,
-    y: 90
   });
 
   var controller, display, game;
@@ -67,6 +66,14 @@ let ratio_x = document.body.clientWidth / (tile_width * map_col),
 
       this.buffer.fillStyle = player.color;
       this.buffer.fillRect(player.x, player.y, player.width, player.height);
+
+      var textWidth = this.buffer.measureText(player.name).width;
+      this.buffer.textAlign = "center";
+      this.buffer.fillStyle = "#eeeeee";
+      this.buffer.font = "Arial";
+      this.buffer.fillRect(player.x + player.width / 2 - textWidth / 2, player.y + player.height, textWidth, 15);
+      this.buffer.fillStyle = "#000000";
+      this.buffer.fillText(player.name, player.x + player.width / 2, player.y + player.height + 10);
 
       this.context.drawImage(this.buffer.canvas, 0, 0, this.buffer.canvas.width, this.buffer.canvas.height, 0, 0, this.context.canvas.width, this.context.canvas.height);
 

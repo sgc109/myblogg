@@ -1,4 +1,3 @@
-// Frank Poth 11/16/2017
 let map_row = 32,
   map_col = 64;
 let tile_width = 28,
@@ -93,6 +92,7 @@ let ratio_x = document.body.clientWidth / (tile_width * map_col),
     ,
 
     loop: function () {
+      // console.log('hi! ' + userName);
       if (controller.left) {
         player.velocity_x -= 1.0;
       }
